@@ -34,9 +34,10 @@ module "server" {
   source = "./server"
 
   # Networking
-  vpc_id           = module.networking.vpc_id
-  elb_subnet_id    = module.networking.subnet_id_dmz
-  server_subnet_id = module.networking.subnet_id_frontend
+  vpc_id             = module.networking.vpc_id
+  elb_subnet_id      = module.networking.subnet_id_dmz
+  server_subnet_id   = module.networking.subnet_id_frontend
+  server_subnet_cidr = module.networking.cidr_frontend
 
   # Instance
   ami = data.aws_ssm_parameter.ubuntu_ami

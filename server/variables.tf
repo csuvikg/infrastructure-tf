@@ -10,6 +10,10 @@ variable "server_subnet_id" {
   type = string
 }
 
+variable "server_subnet_cidr" {
+  type = string
+}
+
 variable "ingress_cidr" {
   type    = string
   default = "0.0.0.0/0"

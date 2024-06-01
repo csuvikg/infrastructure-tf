@@ -31,10 +31,10 @@ resource "aws_security_group" "lb" {
   }
 
   egress {
-    from_port       = var.app_port
-    to_port         = var.app_port
-    protocol        = "-1"
-    security_groups = [aws_security_group.server.id]
+    from_port   = var.app_port
+    to_port     = var.app_port
+    protocol    = "-1"
+    cidr_blocks = [var.server_subnet_cidr]
   }
 
   tags = {
