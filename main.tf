@@ -8,9 +8,24 @@ module "networking" {
 module "bastion" {
   source = "./bastion"
 
+  # Networking
   vpc_id = module.networking.vpc_id
   subnet_id = module.networking.subnet_id_dmz
   egress_cidr = module.networking.cidr_frontend
 
+  # Instance
   ami = data.aws_ssm_parameter.ubuntu_ami
+}
+
+module "database" {
+  source = "./database"
+
+  # Networking
+  vpc_id = module.networking.vpc_id
+  subnet_id = module.networking.subnet_id_backend
+  ingress_cidr = module.networking.cidr_frontend
+
+  # Instance
+  db_username = var.db_username
+  db_password = var.db_password
 }
