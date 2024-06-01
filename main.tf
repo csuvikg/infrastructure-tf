@@ -10,8 +10,8 @@ module "bastion" {
 
   # Networking
   vpc_id      = module.networking.vpc_id
-  subnet_id   = module.networking.subnet_id_dmz
-  egress_cidr = module.networking.cidr_frontend
+  subnet_id   = module.networking.subnet_id_dmz_1
+  egress_cidr = module.networking.cidr_frontend_1
 
   # Instance
   ami = data.aws_ssm_parameter.ubuntu_ami.insecure_value
@@ -22,8 +22,8 @@ module "database" {
 
   # Networking
   vpc_id       = module.networking.vpc_id
-  subnet_id    = module.networking.subnet_id_backend
-  ingress_cidr = module.networking.cidr_frontend
+  subnet_ids   = [module.networking.subnet_id_backend_1, module.networking.subnet_id_backend_2]
+  ingress_cidr = module.networking.cidr_frontend_1
 
   # Instance
   db_username = var.db_username
@@ -35,9 +35,9 @@ module "server" {
 
   # Networking
   vpc_id             = module.networking.vpc_id
-  elb_subnet_id      = module.networking.subnet_id_dmz
-  server_subnet_id   = module.networking.subnet_id_frontend
-  server_subnet_cidr = module.networking.cidr_frontend
+  elb_subnet_ids     = [module.networking.subnet_id_dmz_1, module.networking.subnet_id_dmz_2]
+  server_subnet_id   = module.networking.subnet_id_frontend_1
+  server_subnet_cidr = module.networking.cidr_frontend_1
 
   # Instance
   ami = data.aws_ssm_parameter.ubuntu_ami.insecure_value

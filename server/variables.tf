@@ -2,8 +2,8 @@ variable "vpc_id" {
   type = string
 }
 
-variable "elb_subnet_id" {
-  type = string
+variable "elb_subnet_ids" {
+  type = list(string)
 }
 
 variable "server_subnet_id" {
@@ -50,5 +50,5 @@ variable "external_port" {
 
 variable "external_port_protocol" {
   type = string
-  default = "HTTPS"
+  default = "HTTP"
 }

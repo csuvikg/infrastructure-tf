@@ -6,4 +6,5 @@ provider "aws" {
       Project     = "Exercise"
     }
   }
+  profile = "cc-devops-29"
 }

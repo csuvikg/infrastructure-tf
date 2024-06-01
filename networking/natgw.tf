@@ -4,7 +4,7 @@ resource "aws_eip" "this" {
 
 resource "aws_nat_gateway" "this" {
   allocation_id = aws_eip.this.id
-  subnet_id     = aws_subnet.dmz.id
+  subnet_id     = aws_subnet.dmz_1.id
 
   tags = {
     Name = "main-nat-gateway"
@@ -24,12 +24,22 @@ resource "aws_route_table" "private" {
   }
 }
 
-resource "aws_route_table_association" "backend" {
-  subnet_id      = aws_subnet.backend.id
+resource "aws_route_table_association" "backend_1" {
+  subnet_id      = aws_subnet.backend_1.id
   route_table_id = aws_route_table.private.id
 }
 
-resource "aws_route_table_association" "frontend" {
-  subnet_id      = aws_subnet.frontend.id
+resource "aws_route_table_association" "backend_2" {
+  subnet_id      = aws_subnet.backend_2.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "frontend_1" {
+  subnet_id      = aws_subnet.frontend_1.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "frontend_2" {
+  subnet_id      = aws_subnet.frontend_2.id
   route_table_id = aws_route_table.private.id
 }

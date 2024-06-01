@@ -33,7 +33,7 @@ resource "aws_security_group" "lb" {
   egress {
     from_port   = var.app_port
     to_port     = var.app_port
-    protocol    = "-1"
+    protocol    = "tcp"
     cidr_blocks = [var.server_subnet_cidr]
   }
 

@@ -2,26 +2,50 @@ output "vpc_id" {
   value = aws_vpc.this.id
 }
 
-output "subnet_id_dmz" {
-  value = aws_subnet.dmz.id
+output "subnet_id_dmz_1" {
+  value = aws_subnet.dmz_1.id
 }
 
-output "subnet_id_frontend" {
-  value = aws_subnet.frontend.id
+output "subnet_id_dmz_2" {
+  value = aws_subnet.dmz_2.id
 }
 
-output "subnet_id_backend" {
-  value = aws_subnet.backend.id
+output "subnet_id_frontend_1" {
+  value = aws_subnet.frontend_1.id
 }
 
-output "cidr_dmz" {
-  value = aws_subnet.dmz.cidr_block
+output "subnet_id_frontend_2" {
+  value = aws_subnet.frontend_2.id
 }
 
-output "cidr_frontend" {
-  value = aws_subnet.frontend.cidr_block
+output "subnet_id_backend_1" {
+  value = aws_subnet.backend_1.id
 }
 
-output "cidr_backend" {
-  value = aws_subnet.backend.cidr_block
+output "subnet_id_backend_2" {
+  value = aws_subnet.backend_2.id
+}
+
+output "cidr_dmz_1" {
+  value = aws_subnet.dmz_1.cidr_block
+}
+
+output "cidr_dmz_2" {
+  value = aws_subnet.dmz_2.cidr_block
+}
+
+output "cidr_frontend_1" {
+  value = aws_subnet.frontend_1.cidr_block
+}
+
+output "cidr_frontend_2" {
+  value = aws_subnet.frontend_2.cidr_block
+}
+
+output "cidr_backend_1" {
+  value = aws_subnet.backend_1.cidr_block
+}
+
+output "cidr_backend_2" {
+  value = aws_subnet.backend_2.cidr_block
 }

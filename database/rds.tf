@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "this" {
   name       = "database-subnet-group"
-  subnet_ids = [var.subnet_id]
+  subnet_ids = var.subnet_ids
 }
 
 resource "aws_db_instance" "this" {
