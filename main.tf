@@ -14,7 +14,7 @@ module "bastion" {
   egress_cidr = module.networking.cidr_frontend
 
   # Instance
-  ami = data.aws_ssm_parameter.ubuntu_ami
+  ami = data.aws_ssm_parameter.ubuntu_ami.insecure_value
 }
 
 module "database" {
@@ -40,5 +40,5 @@ module "server" {
   server_subnet_cidr = module.networking.cidr_frontend
 
   # Instance
-  ami = data.aws_ssm_parameter.ubuntu_ami
+  ami = data.aws_ssm_parameter.ubuntu_ami.insecure_value
 }

@@ -1,5 +1,5 @@
 resource "aws_security_group" "server" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = var.vpc_id
 
   ingress {
     from_port       = var.app_port
@@ -21,7 +21,7 @@ resource "aws_security_group" "server" {
 }
 
 resource "aws_security_group" "lb" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = var.vpc_id
 
   ingress {
     from_port   = var.external_port
