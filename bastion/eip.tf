@@ -2,7 +2,7 @@ resource "aws_eip" "this" {
   domain = "vpc"
 
   tags = {
-    name = "bastion-eip"
+    Name = "bastion-eip"
   }
 }
 

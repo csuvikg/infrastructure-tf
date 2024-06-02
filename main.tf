@@ -5,6 +5,10 @@ module "networking" {
   vpc_cidr = var.vpc_cidr
 }
 
+module "key" {
+  source = "./key"
+}
+
 module "bastion" {
   source = "./bastion"
 
@@ -14,7 +18,8 @@ module "bastion" {
   egress_cidr = module.networking.cidr_frontend_1
 
   # Instance
-  ami = data.aws_ssm_parameter.ubuntu_ami.insecure_value
+  ami      = data.aws_ssm_parameter.ubuntu_ami.insecure_value
+  key_name = module.key.aws_key_name
 }
 
 module "database" {
@@ -40,5 +45,6 @@ module "server" {
   server_subnet_cidr = module.networking.cidr_frontend_1
 
   # Instance
-  ami = data.aws_ssm_parameter.ubuntu_ami.insecure_value
+  ami      = data.aws_ssm_parameter.ubuntu_ami.insecure_value
+  key_name = module.key.aws_key_name
 }

@@ -52,3 +52,7 @@ variable "external_port_protocol" {
   type = string
   default = "HTTP"
 }
+
+variable "key_name" {
+  type = string
+}
